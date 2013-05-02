@@ -1,0 +1,132 @@
+                  TOPIC_1	0.11626	                  TOPIC_2	0.10863	                  TOPIC_3	0.08650	                  TOPIC_4	0.09923	
+
+                 japanese	0.00955	                     king	0.01108	                     film	0.01730	                   season	0.01436	
+                   battle	0.00903	                    death	0.00804	                     role	0.00797	                     team	0.01116	
+                    force	0.00869	                  william	0.00707	               production	0.00753	                     game	0.00988	
+                   forces	0.00837	                    james	0.00653	                    times	0.00674	                australia	0.00845	
+                     ship	0.00783	                   george	0.00647	                character	0.00637	                   series	0.00811	
+                  british	0.00777	                  charles	0.00596	                 original	0.00523	                    final	0.00791	
+                      air	0.00774	                  english	0.00592	                     part	0.00494	                   league	0.00746	
+                     fire	0.00692	                     john	0.00583	                     tank	0.00450	                     club	0.00692	
+              guadalcanal	0.00674	                     died	0.00549	                    films	0.00407	                 accessed	0.00682	
+                    ships	0.00661	                   family	0.00549	                    scene	0.00396	                   played	0.00682	
+                   attack	0.00648	                    royal	0.00541	                 produced	0.00380	                    match	0.00646	
+                   troops	0.00613	                    henry	0.00527	                      set	0.00367	                      won	0.00641	
+                   french	0.00537	                    queen	0.00515	              information	0.00357	                     test	0.00579	
+                 aircraft	0.00501	                  england	0.00490	                 director	0.00353	                     play	0.00566	
+                    south	0.00490	                      son	0.00480	                    movie	0.00348	                      top	0.00534	
+                 infantry	0.00478	                   prince	0.00477	                    night	0.00340	                    games	0.00518	
+                  command	0.00471	                   father	0.00473	                     shot	0.00340	                   record	0.00517	
+                     army	0.00452	                  johnson	0.00437	                     turn	0.00319	                     runs	0.00498	
+                     navy	0.00451	                  british	0.00426	                 american	0.00311	               australian	0.00480	
+                 division	0.00445	                     duke	0.00398	                 intended	0.00295	                      run	0.00456	
+                     line	0.00435	                   french	0.00398	                     cast	0.00286	                     took	0.00449	
+                  october	0.00434	                    court	0.00397	                   scenes	0.00278	                     home	0.00427	
+                    heavy	0.00399	                    later	0.00395	                  million	0.00274	                      end	0.00394	
+                   allied	0.00386	                 children	0.00387	                  version	0.00270	                   points	0.00385	
+                    corps	0.00381	                  emperor	0.00384	                      low	0.00268	                  players	0.00384	
+                    naval	0.00378	                   london	0.00378	                   turned	0.00268	                 national	0.00382	
+                september	0.00375	                     mary	0.00372	                    stage	0.00266	                    south	0.00379	
+                   german	0.00373	                    house	0.00369	                      tom	0.00266	                      win	0.00379	
+                    group	0.00368	                       de	0.00358	                     real	0.00265	                  england	0.00377	
+                    frank	0.00366	                     wife	0.00354	                   stated	0.00261	                   fourth	0.00377	
+                   island	0.00363	                  brother	0.00347	                  program	0.00259	                 football	0.00375	
+                     guns	0.00340	                     took	0.00347	                  feature	0.00255	                  college	0.00358	
+                    field	0.00326	                    wrote	0.00341	                attention	0.00253	                    teams	0.00342	
+                    north	0.00323	                   mother	0.00337	                completed	0.00253	                     lead	0.00335	
+                battalion	0.00322	                     lord	0.00335	                    major	0.00253	                  innings	0.00330	
+                 virginia	0.00313	                      law	0.00332	                    press	0.00251	                   scored	0.00325	
+                  january	0.00312	                      sir	0.00327	                interview	0.00249	             championship	0.00323	
+                operation	0.00309	                 daughter	0.00297	                    model	0.00249	                      cup	0.00320	
+                  ordered	0.00307	                  britain	0.00292	                    based	0.00245	                    field	0.00313	
+                    fleet	0.00306	                 marriage	0.00291	                  filming	0.00243	                     ball	0.00311	
+
+
+                  TOPIC_5	0.12460	                  TOPIC_6	0.09491	                  TOPIC_7	0.10720	                  TOPIC_8	0.08715	
+
+                retrieved	0.00927	                      war	0.02226	                  species	0.01221	                  century	0.01088	
+                    music	0.00897	                     army	0.00927	                     area	0.00724	                    known	0.00791	
+                    album	0.00788	                 military	0.00862	                     park	0.00704	                    early	0.00749	
+                     band	0.00728	                  general	0.00757	                    water	0.00685	                    large	0.00632	
+                     book	0.00613	                   german	0.00739	                    found	0.00578	                    works	0.00581	
+                    later	0.00548	                   states	0.00686	                    river	0.00569	                    house	0.00556	
+                 released	0.00508	               government	0.00642	                    north	0.00548	                   called	0.00550	
+                     show	0.00504	                  germany	0.00595	                    south	0.00545	                      art	0.00502	
+                  written	0.00477	                      led	0.00582	                    known	0.00478	                   modern	0.00492	
+                published	0.00472	                   united	0.00572	               population	0.00467	                   church	0.00469	
+                    story	0.00430	                   soviet	0.00551	                    large	0.00446	                     room	0.00448	
+                    wrote	0.00428	                    early	0.00447	                    small	0.00436	                     late	0.00435	
+                     song	0.00418	                  company	0.00440	                   common	0.00422	                   period	0.00435	
+                     york	0.00407	                   europe	0.00435	                    creek	0.00419	                    found	0.00420	
+                     rock	0.00387	                    party	0.00421	                      red	0.00403	                     form	0.00406	
+                   series	0.00381	                  service	0.00421	                    birds	0.00402	                important	0.00401	
+                    march	0.00374	                    later	0.00405	                    areas	0.00383	                    later	0.00385	
+                  writing	0.00365	                    radio	0.00394	                    range	0.00375	                     hall	0.00378	
+                 february	0.00357	                    april	0.00392	                    white	0.00368	                    style	0.00364	
+                  episode	0.00354	                    march	0.00389	                     land	0.00340	                    based	0.00356	
+                 magazine	0.00344	                    began	0.00385	                  include	0.00315	                   nature	0.00345	
+                  theatre	0.00340	                      end	0.00384	                   larger	0.00299	                 movement	0.00326	
+                    began	0.00332	                    order	0.00378	                     food	0.00298	                    place	0.00322	
+                    april	0.00320	                     part	0.00366	                  animals	0.00291	                      end	0.00305	
+                   single	0.00319	                     held	0.00361	                  natural	0.00287	                 evidence	0.00301	
+                  january	0.00318	                  history	0.00361	                including	0.00285	                     seen	0.00270	
+                     love	0.00308	                    chief	0.00350	                      sea	0.00282	                     arms	0.00255	
+                     july	0.00307	                president	0.00347	                     lake	0.00270	                 building	0.00255	
+                    books	0.00302	                 official	0.00345	                     size	0.00266	                     site	0.00255	
+                 appeared	0.00296	                    union	0.00345	                   groups	0.00260	               discovered	0.00253	
+               television	0.00294	                     plan	0.00341	                     high	0.00249	                   middle	0.00251	
+                  october	0.00272	                continued	0.00334	                    lower	0.00241	                     part	0.00251	
+                    songs	0.00269	                  finally	0.00327	                   island	0.00240	                 designed	0.00249	
+                      com	0.00267	                   polish	0.00327	                     wild	0.00238	               collection	0.00247	
+                    video	0.00265	                  control	0.00318	                   forest	0.00232	                   darwin	0.00243	
+                  success	0.00263	                   august	0.00311	                    black	0.00229	                     east	0.00243	
+              performance	0.00259	                     late	0.00306	                       km	0.00221	                  complex	0.00240	
+                  musical	0.00253	                   report	0.00301	                 northern	0.00221	                  earlier	0.00238	
+                  popular	0.00253	                americans	0.00299	                    trees	0.00221	                    today	0.00236	
+                 received	0.00253	                  support	0.00294	                   whales	0.00220	                  central	0.00234	
+
+
+                  TOPIC_9	0.09162	                 TOPIC_10	0.08390	
+
+                     city	0.01662	                  members	0.00794	
+                 national	0.00707	                       de	0.00697	
+                     town	0.00698	                   united	0.00683	
+                  country	0.00691	                   states	0.00571	
+                    local	0.00674	                   number	0.00539	
+                   school	0.00665	                    women	0.00520	
+               university	0.00645	                     days	0.00508	
+                    india	0.00636	                     head	0.00508	
+                    roman	0.00631	                   months	0.00506	
+                   public	0.00560	                      due	0.00470	
+                     part	0.00538	                  richard	0.00468	
+                    major	0.00530	                 european	0.00424	
+                     west	0.00499	                  similar	0.00412	
+                   empire	0.00492	                 reported	0.00404	
+                   indian	0.00476	                   puerto	0.00390	
+                  century	0.00470	                    scott	0.00382	
+                    built	0.00439	                  spanish	0.00358	
+                   system	0.00437	                     body	0.00356	
+                  history	0.00434	                     left	0.00356	
+                retrieved	0.00397	                according	0.00354	
+              established	0.00390	               california	0.00348	
+               government	0.00385	                   making	0.00344	
+                    north	0.00355	                     bill	0.00340	
+                   centre	0.00352	                    black	0.00340	
+                   street	0.00350	                     find	0.00340	
+                    trade	0.00350	                    green	0.00338	
+                   county	0.00348	                  present	0.00334	
+                   period	0.00348	                      ten	0.00334	
+              development	0.00345	                    weeks	0.00332	
+                     road	0.00343	                     seen	0.00324	
+                  western	0.00339	                     help	0.00315	
+                   center	0.00337	                       la	0.00315	
+                      act	0.00321	                      san	0.00313	
+                 building	0.00312	                september	0.00307	
+                   museum	0.00306	                 november	0.00297	
+                   region	0.00304	                    named	0.00285	
+                including	0.00295	               considered	0.00277	
+                 district	0.00288	                     hand	0.00271	
+                     high	0.00288	                including	0.00269	
+                     rome	0.00279	                      met	0.00269	
+
+

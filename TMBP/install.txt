@@ -1,0 +1,37 @@
+Email: j.zeng@ieee.org
+
+We have compiled and tested all functions in both Matlab and Octave environments.
+
+1. Octave
+
+We have tested the toolbox in Windows 7 (64bit) system and installed the Windows installer (Octave and Octave-Forge)
+(\url{http://octave.sourceforge.net/}).
+
+In the Octave environment:
+
+1.1 The user run "make_octave" to compile all functions.
+1.2 After compilation, the user run "quickstart" to check if all functions work properly.
+
+
+2. Matlab
+
+We have tested the toolbox in Windows 7 (64-bit) and Linux (Red Hat Enterprise Linux) (64-bit) in Matlab 2010b.
+We choose the default compiler in Matlab.
+
+In 64-bit Matlab environment:
+
+1.1 The user run "make_matlab64" to compile all functions.
+1.2 After compilation, the user run "quickstart" to check if all functions work properly.
+
+In 32-bit Matlab environment:
+
+1.1 The user run "make_matlab32" to compile all functions.
+1.2 After compilation, the user run "quickstart" to check if all functions work properly.
+
+
+3. Folders
+
+../common: the common library file for all functions.
+../datasets: the data set files in "*.mat" or "*.txt" format.
+../source: all source "*.cpp" files in this toolbox.
+../toolbox: all complied functions in this toolbox.
