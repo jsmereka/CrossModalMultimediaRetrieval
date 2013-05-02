@@ -7,7 +7,7 @@ else
     parallel = 0;
 end
 reloadimgs = 0; % forcefully reload images from file
-getpoints = 0; % get descriptors or load from file
+getpoints = 1; % get descriptors or load from file
 docluster = 0; % perform kmeans or load centers from file
 getcounts = 0; % get visual word counts or load from file
 trnparam1 = []; trnparam2 = []; labelidx = []; acc = 0;
@@ -82,9 +82,10 @@ if(flag)
             end
         end
         if(getpoints)
+            docluster = 1; getcounts = 1;
             featureparam.orientationsPerScale = [8 8 8 8];
-            featureparam.numberBlocks = rowcol(1);
-            featureparam.fc_prefilt = rowcol(2);
+            featureparam.numberBlocks = 1;
+            featureparam.fc_prefilt = 1;
             
             if(parallel)
                 a = findResource; clustersize = a.ClusterSize;
@@ -97,17 +98,17 @@ if(flag)
                         end
                         [~,descriptors{i}] = vl_sift(im2single(imgs{i}));
                     else
-                        tmp = LMgist(imgs{i}, '', featureparam)';
-                        sections = extract_secs_large(tmp, prod(rowcol), 1, 1.0, 0, 0);
+                        sections = extract_secs_large(imgs{i}, rowcol(1), rowcol(2), 1.0, 0, 0);
                         [m, n, q] = size(imgs{i});
-                        sz = [floor(m / prod(rowcol)), n];
+                        sz = [floor(m / rowcol(1)), floor(n / rowcol(2))];
                         for k = 1:length(sections)
                             if((size(sections{k},1) ~= sz(1)) || (size(sections{k},2) ~= sz(2)))
                                 sections{k} = zero_embed(sections{k}, sz(1), sz(2));
                             end
-                            sections{k}(isnan(sections{k}) | isinf(sections{k})) = 0;
-                            if(sum(sections{k}) ~= 0)
-                                descriptors{i} = horzcat(descriptors{i}, sections{k});
+                            tmp = LMgist(sections{k}, '', featureparam)';
+                            tmp(isnan(tmp) | isinf(tmp)) = 0;
+                            if(sum(tmp) ~= 0)
+                                descriptors{i} = horzcat(descriptors{i}, tmp);
                             end
                         end
                     end
@@ -127,17 +128,18 @@ if(flag)
                         end
                         [~,descriptors{i}] = vl_sift(im2single(im));
                     else
-                        tmp = LMgist(imgs{i}, '', featureparam)';
-                        sections = extract_secs_large(tmp, prod(rowcol), 1, 1.0, 0, 0);
-                        [m, n, q] = size(imgs{i});
-                        sz = [floor(m / prod(rowcol)), n];
+                        sections = extract_secs_large(im, rowcol(1), rowcol(2), 1.0, 0, 0);
+                        [m, n, q] = size(im);
+                        sz = [floor(m / rowcol(1)), floor(n / rowcol(2))];
+                        descriptors{i} = [];
                         for k = 1:length(sections)
                             if((size(sections{k},1) ~= sz(1)) || (size(sections{k},2) ~= sz(2)))
                                 sections{k} = zero_embed(sections{k}, sz(1), sz(2));
                             end
-                            sections{k}(isnan(sections{k}) | isinf(sections{k})) = 0;
-                            if(sum(sections{k}) ~= 0)
-                                descriptors{i} = horzcat(descriptors{i}, sections{k});
+                            tmp = LMgist(sections{k}, '', featureparam)';
+                            tmp(isnan(tmp) | isinf(tmp)) = 0;
+                            if(sum(tmp) ~= 0)
+                                descriptors{i} = horzcat(descriptors{i},tmp);
                             end
                         end
                     end
@@ -177,6 +179,7 @@ if(flag)
             end
         end
         if(docluster)
+            getcounts = 1;
             if(isempty(all_descriptors))
                 for i = 1:length(descriptors)
                     all_descriptors = horzcat(all_descriptors, descriptors{i});
@@ -355,5 +358,5 @@ if(flag)
         save(['Img_trn_gist' num2str(modelid) '.mat'],'I_tr','cat_ids_trn');
     end
     
-    %fprintf(1,'\tTraining accuracy = %.1f%%\n', acc);
+    fprintf(1,'\tTraining accuracy = %.1f%%\n', acc);
 end

@@ -21,9 +21,9 @@ dlda = 2; % 0 = LDA, 1 = DLDA, 2 = NB, 3 = loads ACM paper
 % params for img features
 forcerebuildimg = 1; % if(1) forces the feature extraction to be performed again
 imgsize = [300 300]; % resize loaded images
-sec_rows = 5; sec_cols = 5; % for image segmentation using gist descriptors
+sec_rows = 7; sec_cols = 7; % for image segmentation using gist descriptors
 featnum = 1; % 0 = sift, 1 = gist
-modelnum = 1; % Bag of words: 0 = vector quantized counts, 1 = naive bayes, 2 = plsa, Raw features = 4, loads ACM paper = 3
+modelnum = 0; % Bag of words: 0 = vector quantized counts, 1 = naive bayes, 2 = plsa, Raw features = 4, loads ACM paper = 3
 
 
 if(builddata)
