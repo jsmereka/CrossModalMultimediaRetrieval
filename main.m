@@ -19,11 +19,11 @@ remove_nums = 1; % remove numbers from text data
 dlda = 2; % 0 = LDA, 1 = DLDA, 2 = NB, 3 = loads ACM paper
 
 % params for img features
-forcerebuildimg = 1; % if(1) forces the feature extraction to be performed again
+forcerebuildimg = 0; % if(1) forces the feature extraction to be performed again
 imgsize = [300 300]; % resize loaded images
 sec_rows = 7; sec_cols = 7; % for image segmentation using gist descriptors
 featnum = 1; % 0 = sift, 1 = gist
-modelnum = 0; % Bag of words: 0 = vector quantized counts, 1 = naive bayes, 2 = plsa, Raw features = 4, loads ACM paper = 3
+modelnum = 1; % Bag of words: 0 = vector quantized counts, 1 = naive bayes, 2 = plsa, Raw features = 4, loads ACM paper = 3
 
 
 if(builddata)
@@ -112,6 +112,7 @@ clear image_fit text_fit txt_testing_idx img_testing_idx a;
 
 
 % semantic matching
+topics = max(cat_ids_tst);
 disttype = '';
 fprintf(1,'\n\nRetreiving text from image query and image from text query\n\n');
 for i = 2:2
@@ -139,10 +140,26 @@ for i = 2:2
         img_ap(j) = util_average_precision(recall',precision');
     end
     fprintf(1,'%s: Image mean ap = %.4f, ACM-MM Paper = 0.277\n', disttype, mean(img_ap));
-    figure;
-    [recall, precision] = util_calc_precision_recall_curve(img_query_auth(:));
+    
+    imgconf = zeros(topics);
+    for q = 1:topics
+        for j = 1:topics
+            ap = zeros(sum(cat_ids_tst == q | cat_ids_tst == j),1);
+            for k = 1:sum(cat_ids_tst == q | cat_ids_tst == j)
+                [recall, precision] = util_calc_precision_recall_curve(img_query_auth(k,(cat_ids_tst == q | cat_ids_tst == j)));
+                ap(k) = util_average_precision(recall',precision');
+            end
+            ap(isnan(ap) | isinf(ap)) = 0;
+            imgconf(q,j) = mean(ap);
+        end
+    end
+    
     
     if(showgraph)
+        figure;
+        imagesc(imgconf); colorbar; colormap gray; title('Image Query to Retrieve Text');
+        figure;
+        [recall, precision] = util_calc_precision_recall_curve(img_query_auth(:));
         tmp = randi([1 max(cat_ids_tst)],L,L);
         tmp = (tmp == repmat(cat_ids_tst,[1,L]));
         [ran_recall, ran_precision] = util_calc_precision_recall_curve(tmp(:));
@@ -163,10 +180,25 @@ for i = 2:2
         txt_ap(j) = util_average_precision(recall',precision');
     end
     fprintf(1,'%s: Text mean ap  = %.4f, ACM-MM Paper = 0.226\n', disttype, mean(txt_ap));
-    figure;
-    [recall, precision] = util_calc_precision_recall_curve(txt_query_auth(:));
+    
+    txtconf = zeros(topics);
+    for q = 1:topics
+        for j = 1:topics
+            ap = zeros(sum(cat_ids_tst == q | cat_ids_tst == j),1);
+            for k = 1:sum(cat_ids_tst == q | cat_ids_tst == j)
+                [recall, precision] = util_calc_precision_recall_curve(txt_query_auth(k,(cat_ids_tst == q | cat_ids_tst == j)));
+                ap(k) = util_average_precision(recall',precision');
+            end
+            ap(isnan(ap) | isinf(ap)) = 0;
+            txtconf(q,j) = mean(ap);
+        end
+    end
     
     if(showgraph)
+        figure;
+        imagesc(txtconf); colorbar; colormap gray; title('Text Query to Retrieve Image');
+        figure;
+        [recall, precision] = util_calc_precision_recall_curve(txt_query_auth(:));
         tmp = randi([1 max(cat_ids_tst)],L,L);
         tmp = (tmp == repmat(cat_ids_tst,[1,L]));
         [ran_recall, ran_precision] = util_calc_precision_recall_curve(tmp(:));

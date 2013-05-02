@@ -7,7 +7,7 @@ else
     parallel = 0;
 end
 reloadimgs = 0; % forcefully reload images from file
-getpoints = 1; % get descriptors or load from file
+getpoints = 0; % get descriptors or load from file
 getcounts = 0; % get visual word counts or load from file
 
 
