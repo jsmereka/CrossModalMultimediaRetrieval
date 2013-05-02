@@ -83,8 +83,8 @@ if(flag)
         end
         if(getpoints)
             featureparam.orientationsPerScale = [8 8 8 8];
-            featureparam.numberBlocks = 4;
-            featureparam.fc_prefilt = 4;
+            featureparam.numberBlocks = rowcol(1);
+            featureparam.fc_prefilt = rowcol(2);
             
             if(parallel)
                 a = findResource; clustersize = a.ClusterSize;
@@ -97,17 +97,17 @@ if(flag)
                         end
                         [~,descriptors{i}] = vl_sift(im2single(imgs{i}));
                     else
-                        sections = extract_secs_large(imgs{i}, rowcol(1), rowcol(2), 1.0, 0, 0);
+                        tmp = LMgist(imgs{i}, '', featureparam)';
+                        sections = extract_secs_large(tmp, prod(rowcol), 1, 1.0, 0, 0);
                         [m, n, q] = size(imgs{i});
-                        sz = [floor(m / rowcol(1)), floor(n / rowcol(2))];
+                        sz = [floor(m / prod(rowcol)), n];
                         for k = 1:length(sections)
                             if((size(sections{k},1) ~= sz(1)) || (size(sections{k},2) ~= sz(2)))
                                 sections{k} = zero_embed(sections{k}, sz(1), sz(2));
                             end
-                            tmp = LMgist(sections{k}, '', featureparam)';
-                            tmp(isnan(tmp) | isinf(tmp)) = 0;
-                            if(sum(tmp) ~= 0)
-                                descriptors{i} = horzcat(descriptors{i}, tmp);
+                            sections{k}(isnan(sections{k}) | isinf(sections{k})) = 0;
+                            if(sum(sections{k}) ~= 0)
+                                descriptors{i} = horzcat(descriptors{i}, sections{k});
                             end
                         end
                     end
@@ -127,18 +127,17 @@ if(flag)
                         end
                         [~,descriptors{i}] = vl_sift(im2single(im));
                     else
-                        sections = extract_secs_large(im, rowcol(1), rowcol(2), 1.0, 0, 0);
-                        [m, n, q] = size(im);
-                        sz = [floor(m / rowcol(1)), floor(n / rowcol(2))];
-                        descriptors{i} = [];
+                        tmp = LMgist(imgs{i}, '', featureparam)';
+                        sections = extract_secs_large(tmp, prod(rowcol), 1, 1.0, 0, 0);
+                        [m, n, q] = size(imgs{i});
+                        sz = [floor(m / prod(rowcol)), n];
                         for k = 1:length(sections)
                             if((size(sections{k},1) ~= sz(1)) || (size(sections{k},2) ~= sz(2)))
                                 sections{k} = zero_embed(sections{k}, sz(1), sz(2));
                             end
-                            tmp = LMgist(sections{k}, '', featureparam)';
-                            tmp(isnan(tmp) | isinf(tmp)) = 0;
-                            if(sum(tmp) ~= 0)
-                                descriptors{i} = horzcat(descriptors{i},tmp);
+                            sections{k}(isnan(sections{k}) | isinf(sections{k})) = 0;
+                            if(sum(sections{k}) ~= 0)
+                                descriptors{i} = horzcat(descriptors{i}, sections{k});
                             end
                         end
                     end
@@ -155,7 +154,11 @@ if(flag)
         if(featid == 0)
             codebook_size = 128;
         else
-            codebook_size = prod(rowcol);
+            if(prod(rowcol) < 128)
+                codebook_size = prod(rowcol);
+            else
+                codebook_size = 128;
+            end
         end
         cluster_options.maxiters = 100;
         cluster_options.verbose = 0;
@@ -352,5 +355,5 @@ if(flag)
         save(['Img_trn_gist' num2str(modelid) '.mat'],'I_tr','cat_ids_trn');
     end
     
-    fprintf(1,'\tTraining accuracy = %.1f%%\n', acc);
+    %fprintf(1,'\tTraining accuracy = %.1f%%\n', acc);
 end

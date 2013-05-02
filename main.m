@@ -7,19 +7,23 @@ else
     root = 'E:/Datasets/Media Retrieval/wikipedia_dataset/';
 end
 
+showgraph = 1;
+
+builddata = 1; % if(1) then get data from the files and run feature extraction, otherwise load features from ACM-MM paper
+
+% params for text features
+forcerebuildtxt = 0; % if(1) forces the feature extraction to be performed again
 stoplistfile = 'stopwordlist.txt';
 freqcutoff = 0; % cut off words that are under a certain frequency
 remove_nums = 1; % remove numbers from text data
-builddata = 1; % if(1) then get data from the files and run feature extraction, otherwise load features from ACM-MM paper
-forcerebuildtxt = 0; % if(1) forces the feature extraction to be performed again
-forcerebuildimg = 1; % if(1) forces the feature extraction to be performed again
 dlda = 2; % 0 = LDA, 1 = DLDA, 2 = NB, 3 = loads ACM paper
-imgsize = [300 300]; % resize loaded images
-sec_rows = 4; sec_cols = 4; % for image segmentation using gist descriptors
-featnum = 1; % 0 = sift, 1 = gist
-modelnum = 0; % Bag of words: 0 = vector quantized counts, 1 = naive bayes, 2 = plsa, Raw features = 4, loads ACM paper = 3
 
-showgraph = 1;
+% params for img features
+forcerebuildimg = 1; % if(1) forces the feature extraction to be performed again
+imgsize = [300 300]; % resize loaded images
+sec_rows = 5; sec_cols = 5; % for image segmentation using gist descriptors
+featnum = 1; % 0 = sift, 1 = gist
+modelnum = 1; % Bag of words: 0 = vector quantized counts, 1 = naive bayes, 2 = plsa, Raw features = 4, loads ACM paper = 3
 
 
 if(builddata)
@@ -110,7 +114,7 @@ clear image_fit text_fit txt_testing_idx img_testing_idx a;
 % semantic matching
 disttype = '';
 fprintf(1,'\n\nRetreiving text from image query and image from text query\n\n');
-for i = 1:2
+for i = 2:2
     switch(i)
         case 1
             disttype = 'cosine';

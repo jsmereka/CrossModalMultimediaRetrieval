@@ -7,8 +7,8 @@ else
     parallel = 0;
 end
 reloadimgs = 0; % forcefully reload images from file
-getpoints = 1; % get descriptors or load from file
-getcounts = 1; % get visual word counts or load from file
+getpoints = 0; % get descriptors or load from file
+getcounts = 0; % get visual word counts or load from file
 
 
 % get features to produce I_te
@@ -79,17 +79,17 @@ if(flag)
                         end
                         [~,descriptors{i}] = vl_sift(im2single(imgs{i}));
                     else
-                        sections = extract_secs_large(imgs{i}, rowcol(1), rowcol(2), 1.0, 0, 0);
+                        tmp = LMgist(imgs{i}, '', featureparam)';
+                        sections = extract_secs_large(tmp, prod(rowcol), 1, 1.0, 0, 0);
                         [m, n, q] = size(imgs{i});
-                        sz = [floor(m / rowcol(1)), floor(n / rowcol(2))];
+                        sz = [floor(m / prod(rowcol)), n];
                         for k = 1:length(sections)
                             if((size(sections{k},1) ~= sz(1)) || (size(sections{k},2) ~= sz(2)))
                                 sections{k} = zero_embed(sections{k}, sz(1), sz(2));
                             end
-                            tmp = LMgist(sections{k}, '', featureparam)';
-                            tmp(isnan(tmp) | isinf(tmp)) = 0;
-                            if(sum(tmp) ~= 0)
-                                descriptors{i} = horzcat(descriptors{i}, tmp);
+                            sections{k}(isnan(sections{k}) | isinf(sections{k})) = 0;
+                            if(sum(sections{k}) ~= 0)
+                                descriptors{i} = horzcat(descriptors{i}, sections{k});
                             end
                         end
                     end
@@ -105,18 +105,17 @@ if(flag)
                         end
                         [~,descriptors{i}] = vl_sift(im2single(im));
                     else
-                        sections = extract_secs_large(im, rowcol(1), rowcol(2), 1.0, 0, 0);
-                        [m, n, q] = size(im);
-                        sz = [floor(m / rowcol(1)), floor(n / rowcol(2))];
-                        descriptors{i} = [];
+                        tmp = LMgist(imgs{i}, '', featureparam)';
+                        sections = extract_secs_large(tmp, prod(rowcol), 1, 1.0, 0, 0);
+                        [m, n, q] = size(imgs{i});
+                        sz = [floor(m / prod(rowcol)), n];
                         for k = 1:length(sections)
                             if((size(sections{k},1) ~= sz(1)) || (size(sections{k},2) ~= sz(2)))
                                 sections{k} = zero_embed(sections{k}, sz(1), sz(2));
                             end
-                            tmp = LMgist(sections{k}, '', featureparam)';
-                            tmp(isnan(tmp) | isinf(tmp)) = 0;
-                            if(sum(tmp) ~= 0)
-                                descriptors{i} = horzcat(descriptors{i},tmp);
+                            sections{k}(isnan(sections{k}) | isinf(sections{k})) = 0;
+                            if(sum(sections{k}) ~= 0)
+                                descriptors{i} = horzcat(descriptors{i}, sections{k});
                             end
                         end
                     end
@@ -257,6 +256,5 @@ if(flag)
         save(['Img_tst_gist' num2str(modelid) '.mat'],'I_te','cat_ids_tst');
     end
     
-    fprintf(1,'\tTesting accuracy = %.1f%%\n', acc);
-    
+    %fprintf(1,'\tTesting accuracy = %.1f%%\n', acc);    
 end
